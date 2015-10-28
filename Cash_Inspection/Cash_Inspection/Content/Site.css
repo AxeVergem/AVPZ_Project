@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 60px;
     padding-bottom: 20px;
 }
 
@@ -15,7 +15,12 @@
 .dl-horizontal dt {
     white-space: normal;
 }
-
+/*Управление категорией УДАЛИТЬ/ИНФОМРАЦИЯ/РЕДАКТИРОВАТь*/
+.eid_menu_right {
+    padding:8px;
+  float: right !important; }
+.NumMoney_imp {
+  float: left }
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

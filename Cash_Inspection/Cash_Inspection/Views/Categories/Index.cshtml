@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Cash_Inspection.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.DisplayNameFor(model => model.Title)//@Html.DisplayNameFor(model => model.NumberofMoney)
+<div class="row">
+    <p>
+        <a class="ibtn waves-effect waves-light ibtn" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
+    </p>
+
+    @foreach (var item in Model)
+    {
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="eid_menu_right">
+                    <a href='@Url.Action("Edit", new { id = item.Id })'><i class="material-icons">settings</i></a>
+                    <a href='@Url.Action("Details", new { id = item.Id })'><i class="material-icons">info_outline</i></a>
+                    <a href='@Url.Action("Delete", new { id = item.Id })'><i class="material-icons">delete</i></a>
+                </div>
+                <div class="collapsible-header"><i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)  =  @Html.DisplayFor(modelItem => item.NumberofMoney) грн</div>
+                
+                <div class="collapsible-body">
+                    <a href='/Subcategories/Create'><i class="material-icons">add</i></a>
+                        @foreach (var i in item.ListSubcategory)
+                        {
+                            <div class="chip">
+                                @Html.DisplayFor(modelItem => i.Title) = @Html.DisplayFor(modelItem => i.Value)
+                                <a href='/Subcategories/Delete/@item.Id'><i class="material-icons">close</i></a>
+                                <a href='/Subcategories/Edit/@item.Id'><i class="material-icons">settings</i></a>
+                            </div>
+                        }
+                    </div>
+
+                </li>
+
+            </ul>
+
+        @*@Html.Action("Edit", new { id = item.Id }, new { @class = "material-icons" })
+            @Html.ActionLink("Details", new { id = item.Id })<i class="material-icons">info_outline</i>
+                @Html.ActionLink("Delete", new { id = item.Id })<i class="material-icons">delete</i>*@
+    
+    }
+
+</div>
+
