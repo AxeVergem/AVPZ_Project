@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                    <li>@Html.ActionLink("Subcategories", "Index", "Subcategories")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -39,6 +39,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/materialize")
     @RenderSection("scripts", required: false)
 </body>
 </html>
