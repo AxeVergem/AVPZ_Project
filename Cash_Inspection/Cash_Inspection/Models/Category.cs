@@ -17,6 +17,9 @@ namespace Cash_Inspection.Models
         public decimal NumberofMoney { get; set; }
 
         public virtual ICollection<Subcategory> ListSubcategory { get; set; }
+
+        public virtual string iUserName { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
     public class Subcategory
     {
