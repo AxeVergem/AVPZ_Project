@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Core;
 namespace Interfaces
 {
+    //Category
     public interface ICategoryRepository : IDisposable
     {
         IEnumerable<Category> GetCategoryList();
