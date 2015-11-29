@@ -2278,7 +2278,7 @@ td, th {
   border: 1px solid #e0e0e0;
   border-radius: 2px;
   overflow: hidden;
-  position: relative; }
+   }
   .collection .collection-item {
     background-color: #fff;
     line-height: 1.5rem;
@@ -2288,7 +2288,7 @@ td, th {
     .collection .collection-item.avatar {
       min-height: 84px;
       padding-left: 72px;
-      position: relative; }
+       }
       .collection .collection-item.avatar .circle {
         position: absolute;
         width: 42px;
@@ -5033,22 +5033,7 @@ nav ul a span.badge {
 .mdi-toggle-star:before {
   content: "\e8f5"; }
 
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 90%; }
 
-@media only screen and (min-width : 601px) {
-  .container {
-    width: 85%; } }
-
-@media only screen and (min-width : 993px) {
-  .container {
-    width: 70%; } }
-
-.container .row {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem; }
 
 .section {
   padding-top: 1rem;

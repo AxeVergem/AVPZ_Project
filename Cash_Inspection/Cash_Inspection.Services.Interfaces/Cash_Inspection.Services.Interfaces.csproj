@@ -43,12 +43,6 @@
     <Compile Include="IOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Cash_Inspection.Domain.Core.csproj">
-      <Project>{862770dc-2157-4948-82f9-0c3a6d3f73cf}</Project>
-      <Name>Cash_Inspection.Domain.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

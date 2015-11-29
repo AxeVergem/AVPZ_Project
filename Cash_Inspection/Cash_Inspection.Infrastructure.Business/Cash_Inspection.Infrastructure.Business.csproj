@@ -48,10 +48,6 @@
       <Project>{291c6540-55c9-4122-830d-1951dba4ac69}</Project>
       <Name>Cash_Inspection.Services.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Cash_Inspection.Domain.Core.csproj">
-      <Project>{862770dc-2157-4948-82f9-0c3a6d3f73cf}</Project>
-      <Name>Cash_Inspection.Domain.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

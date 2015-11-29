@@ -7,31 +7,62 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Cash_Inspection.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Cash_Inspection.Controllers
 {
+    
     public class CategoriesController : Controller
     {
+        
         private DataEntities db = new DataEntities();
+        IdentityUnitOfWork UnitObj = new IdentityUnitOfWork();
 
-        // GET: Categories
+        #region NO-POST-GET_Actions
+                                                                                        /// <summary>
+                                                                                        /// Вывод общих средств Аккаунта.
+                                                                                        /// </summary>                                                                                       
+                                                                                    public Nullable<decimal> TotalMoney()
+                                                                                    {
+                                                                                        return db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+                                                                                    }
+
+                                                                                        /// <summary>
+                                                                                        /// Cоставление и вывод Статистики.
+                                                                                        /// </summary>
+        
+
+
+        #endregion
+
+
+
         public ActionResult Index()
         {
-            return View(db.CategoryDb.ToList());
+            ViewBag.TotalMoney = db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+            string id = User.Identity.GetUserId();
+            var q = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
+
+            return View(q.ToList());
+            
         }
 
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
+            var qu = from b in db.CategoryDb where b.Id == id select b;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.CategoryDb.Find(id);
+            Category category = qu.ToList()[0];
             if (category == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryName = qu.ToList()[0].Title;
+            ViewBag.ID = qu.ToList()[0].Id;
+
             return View(category);
         }
 
@@ -48,10 +79,11 @@ namespace Cash_Inspection.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,NumberofMoney")] Category category)
         {
+            
             if (ModelState.IsValid)
             {
-                db.CategoryDb.Add(category);
-                db.SaveChanges();
+                UnitObj.Categories.Create(category,HttpContext);
+                UnitObj.Save();
                 return RedirectToAction("Index");
             }
 

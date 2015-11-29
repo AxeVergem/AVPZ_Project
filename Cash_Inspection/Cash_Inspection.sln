@@ -5,22 +5,6 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Inspection", "Cash_Inspection\Cash_Inspection.csproj", "{025518A0-313E-4BC8-A950-B9A2241B310E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{943BFA38-EC56-4E82-8295-9876AE6C13BF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Inspection.Domain.Core", "Core\Cash_Inspection.Domain.Core.csproj", "{862770DC-2157-4948-82F9-0C3A6D3F73CF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Inspection.Domain.Interfaces", "Interfaces\Cash_Inspection.Domain.Interfaces.csproj", "{00448D8F-C134-4446-B50B-B85A35C900EC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{35C6AE7E-8AE8-456F-87F0-65507090BFF2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Inspection.Services.Interfaces", "Cash_Inspection.Services.Interfaces\Cash_Inspection.Services.Interfaces.csproj", "{291C6540-55C9-4122-830D-1951DBA4AC69}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EB0A60E8-BE92-4331-BD0F-8F7BC0666E54}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Inspection.Infrastructure.Data", "Cash_Inspection.Infrastructure.Data\Cash_Inspection.Infrastructure.Data.csproj", "{7A4D10E6-5D04-4130-B20E-F01143E3537B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cash_Inspection.Infrastructure.Business", "Cash_Inspection.Infrastructure.Business\Cash_Inspection.Infrastructure.Business.csproj", "{12A4FDC7-C3EB-4526-BB54-62FABB319F12}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,35 +15,8 @@ Global
 		{025518A0-313E-4BC8-A950-B9A2241B310E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{025518A0-313E-4BC8-A950-B9A2241B310E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{025518A0-313E-4BC8-A950-B9A2241B310E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{862770DC-2157-4948-82F9-0C3A6D3F73CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{862770DC-2157-4948-82F9-0C3A6D3F73CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{862770DC-2157-4948-82F9-0C3A6D3F73CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{862770DC-2157-4948-82F9-0C3A6D3F73CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{00448D8F-C134-4446-B50B-B85A35C900EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00448D8F-C134-4446-B50B-B85A35C900EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00448D8F-C134-4446-B50B-B85A35C900EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00448D8F-C134-4446-B50B-B85A35C900EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{291C6540-55C9-4122-830D-1951DBA4AC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{291C6540-55C9-4122-830D-1951DBA4AC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{291C6540-55C9-4122-830D-1951DBA4AC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{291C6540-55C9-4122-830D-1951DBA4AC69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A4D10E6-5D04-4130-B20E-F01143E3537B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A4D10E6-5D04-4130-B20E-F01143E3537B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A4D10E6-5D04-4130-B20E-F01143E3537B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A4D10E6-5D04-4130-B20E-F01143E3537B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12A4FDC7-C3EB-4526-BB54-62FABB319F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12A4FDC7-C3EB-4526-BB54-62FABB319F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12A4FDC7-C3EB-4526-BB54-62FABB319F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12A4FDC7-C3EB-4526-BB54-62FABB319F12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{862770DC-2157-4948-82F9-0C3A6D3F73CF} = {943BFA38-EC56-4E82-8295-9876AE6C13BF}
-		{00448D8F-C134-4446-B50B-B85A35C900EC} = {943BFA38-EC56-4E82-8295-9876AE6C13BF}
-		{291C6540-55C9-4122-830D-1951DBA4AC69} = {35C6AE7E-8AE8-456F-87F0-65507090BFF2}
-		{7A4D10E6-5D04-4130-B20E-F01143E3537B} = {EB0A60E8-BE92-4331-BD0F-8F7BC0666E54}
-		{12A4FDC7-C3EB-4526-BB54-62FABB319F12} = {EB0A60E8-BE92-4331-BD0F-8F7BC0666E54}
 	EndGlobalSection
 EndGlobal
