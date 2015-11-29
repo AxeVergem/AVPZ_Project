@@ -58,16 +58,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Cash_Inspection.Domain.Core.csproj">
-      <Project>{862770dc-2157-4948-82f9-0c3a6d3f73cf}</Project>
-      <Name>Cash_Inspection.Domain.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interfaces\Cash_Inspection.Domain.Interfaces.csproj">
-      <Project>{00448d8f-c134-4446-b50b-b85a35c900ec}</Project>
-      <Name>Cash_Inspection.Domain.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

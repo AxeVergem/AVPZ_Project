@@ -38,6 +38,7 @@ namespace Cash_Inspection.Models
             return new DataEntities();
         }
 
+        public System.Data.Entity.DbSet<Cash_Inspection.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
     //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     //{

@@ -9,11 +9,14 @@ using System.Web;
 using System.Web.Mvc;
 using Cash_Inspection.Models;
 
+using Microsoft.AspNet.Identity;
+
 namespace Cash_Inspection.Controllers
 {
     public class SubcategoriesController : Controller
     {
         private DataEntities db = new DataEntities();
+        IdentityUnitOfWork UnitObj = new IdentityUnitOfWork();
 
         // GET: Subcategories
         public async Task<ActionResult> Index()
@@ -38,10 +41,11 @@ namespace Cash_Inspection.Controllers
         }
 
         // GET: Subcategories/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.CategoryId = new SelectList(db.CategoryDb, "Id", "Title");
-            return View();
+
+            ViewBag.id=id;
+            return View(new Subcategory() { CategoryId = id ,Value=0 });
         }
 
         // POST: Subcategories/Create
@@ -49,12 +53,13 @@ namespace Cash_Inspection.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Value,CategoryId")] Subcategory subcategory)
+        public ActionResult Create([Bind(Include = "Id,Title,Value,CategoryId,Comment")] Subcategory subcategory)
         {
             if (ModelState.IsValid)
             {
-                db.SubcategoryDb.Add(subcategory);
-                await db.SaveChangesAsync();
+                var qu = from b in db.CategoryDb where b.Id == subcategory.CategoryId select b;                
+                UnitObj.Subcategories.Create(subcategory, HttpContext);
+                UnitObj.Save();
                 return RedirectToAction("Index");
             }
 

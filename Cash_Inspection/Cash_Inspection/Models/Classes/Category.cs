@@ -30,7 +30,9 @@ namespace Cash_Inspection.Models
 
         [Display(Name = "Стоимость")]
         public decimal Value { get; set; }
-
+        [Display(Name = "Комментарий")]
+        public string Comment { get; set; }
+        public DateTime Date { get; set; }
         public virtual int CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }

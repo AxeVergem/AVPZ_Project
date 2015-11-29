@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Collections.Generic;
+using System.Collections;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -12,6 +14,13 @@ using Cash_Inspection.Models;
 
 namespace Cash_Inspection.Controllers
 {
+
+
+
+
+
+
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -21,6 +30,35 @@ namespace Cash_Inspection.Controllers
         public AccountController()
         {
         }
+
+
+
+        #region myActions
+        public ActionResult AddTotalResources()
+        {
+            
+            return View();
+        }
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -153,7 +191,7 @@ namespace Cash_Inspection.Controllers
             {
                 var UserName = User.Identity.Name;
                
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, TotalMoney=0 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
