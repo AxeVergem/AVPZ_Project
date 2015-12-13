@@ -16,7 +16,7 @@ namespace Cash_Inspection.Controllers
     {
         
         private DataEntities db = new DataEntities();
-        IdentityUnitOfWork UnitObj = new IdentityUnitOfWork();
+        IdentityUnitOfWork _Manager= new IdentityUnitOfWork();
 
         #region NO-POST-GET_Actions
                                                                                         /// <summary>
@@ -27,9 +27,6 @@ namespace Cash_Inspection.Controllers
                                                                                         return db.Users.Find(User.Identity.GetUserId()).TotalMoney;
                                                                                     }
 
-                                                                                        /// <summary>
-                                                                                        /// Cоставление и вывод Статистики.
-                                                                                        /// </summary>
         
 
 
@@ -55,14 +52,13 @@ namespace Cash_Inspection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = qu.ToList()[0];
+            Category category = _Manager.Categories.Get((int)id);
             if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryName = qu.ToList()[0].Title;
-            ViewBag.ID = qu.ToList()[0].Id;
-
+            ViewBag.CategoryName = _Manager.Categories.Get((int)id).Title;
+            ViewBag.ID = _Manager.Categories.Get((int)id).Id; 
             return View(category);
         }
 
@@ -82,8 +78,9 @@ namespace Cash_Inspection.Controllers
             
             if (ModelState.IsValid)
             {
-                UnitObj.Categories.Create(category,HttpContext);
-                UnitObj.Save();
+                _Manager.Categories.Create(category,HttpContext);
+                _Manager.Trans.TotalToCategoryTransaction(HttpContext, category);
+                _Manager.Save();
                 return RedirectToAction("Index");
             }
 
@@ -97,7 +94,7 @@ namespace Cash_Inspection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.CategoryDb.Find(id);
+            Category category = _Manager.Categories.Get((int)id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -110,12 +107,12 @@ namespace Cash_Inspection.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,NumberofMoney")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Title")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
+                _Manager.Categories.Update(category);
+                _Manager.Save();
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -128,7 +125,7 @@ namespace Cash_Inspection.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.CategoryDb.Find(id);
+            Category category = _Manager.Categories.Get((int)id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -142,8 +139,8 @@ namespace Cash_Inspection.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.CategoryDb.Find(id);
-            db.CategoryDb.Remove(category);
-            db.SaveChanges();
+            _Manager.Categories.Delete(id);
+            _Manager.Save();
             return RedirectToAction("Index");
         }
 

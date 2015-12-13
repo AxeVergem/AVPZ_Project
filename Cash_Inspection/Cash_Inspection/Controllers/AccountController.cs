@@ -26,18 +26,31 @@ namespace Cash_Inspection.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public IdentityUnitOfWork _Manager;
 
         public AccountController()
         {
+            _Manager = new IdentityUnitOfWork();
         }
 
 
 
         #region myActions
-        public ActionResult AddTotalResources()
+        [HttpGet]
+          public ActionResult AddTotalResources()
         {
             
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddTotalResources([Bind(Include = "Id,Value,Comment,CategoryId")] Subcategory subcat)
+        {
+            subcat.CategoryId = 789;
+            _Manager.Subcategories.Create(subcat, HttpContext);
+            _Manager.Trans.ImplUserResources(HttpContext, subcat);
+            _Manager.Save();
+
+            return View(subcat);
         }
         #endregion
 

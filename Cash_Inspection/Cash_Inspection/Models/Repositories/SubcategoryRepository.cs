@@ -46,7 +46,8 @@ namespace Cash_Inspection.Models
                 Date = DateTime.Now,
                 CategoryId = Subcategory.CategoryId,
                 Comment = Subcategory.Comment,
-                Category = Subcategory.Category
+      
+                UserId = http.User.Identity.GetUserId()
                 
             });
             db.SubcategoryDb.Add(Subcategory);

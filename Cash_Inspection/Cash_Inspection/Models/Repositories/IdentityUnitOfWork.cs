@@ -18,12 +18,13 @@ namespace Cash_Inspection.Models
         private DataEntities db;
         private CategoryRepository categoryRepository;
         private SubcategoryRepository subcategoryRepository;
+        private ResourcesRepository resourcesRepository;
 
 
         public IdentityUnitOfWork()
         {
             db = new DataEntities();
-
+            resourcesRepository = new ResourcesRepository(db);
             categoryRepository = new CategoryRepository(db);
             subcategoryRepository = new SubcategoryRepository(db);
         }
@@ -46,10 +47,20 @@ namespace Cash_Inspection.Models
                 return subcategoryRepository;
             }
         }
+        public ResourcesRepository Trans
+        {
+            get
+            {
+                if (resourcesRepository == null)
+                    resourcesRepository = new ResourcesRepository (db);
+                return resourcesRepository;
+            }
+        }
         public void Save()
         {
             categoryRepository._db.SaveChanges();
             subcategoryRepository.db.SaveChanges();
+            resourcesRepository._db.SaveChanges();
         }
         public void Dispose()
         {
