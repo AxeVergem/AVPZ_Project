@@ -37,13 +37,17 @@ namespace Cash_Inspection.Models
 
         public IEnumerable<Category> GetAll(HttpContextBase http)
         {
-            var qu = from b in _db.CategoryDb where b.ApplicationUser.Id == http.User.Identity.GetUserId() select b;
+            string id = http.User.Identity.GetUserId();
+             var qu = from b in _db.CategoryDb where b.ApplicationUser.Id == id select b;
             return qu.ToList();
         }
 
         public Category Get(int id)
         {
-            return _db.CategoryDb.Find(id);
+            var qu = from b in _db.CategoryDb where b.Id == id select b;
+            if (qu.ToList()[0] == null)
+                return null;                     
+            return qu.ToList()[0];  
         }
 
         public void Create(Category Category,System.Web.HttpContextBase HttpContext)
