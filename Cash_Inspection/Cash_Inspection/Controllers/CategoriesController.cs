@@ -18,6 +18,7 @@ namespace Cash_Inspection.Controllers
         private DataEntities db = new DataEntities();
         IdentityUnitOfWork _Manager= new IdentityUnitOfWork();
 
+
         #region NO-POST-GET_Actions
                                                                                         /// <summary>
                                                                                         /// Вывод общих средств Аккаунта.
@@ -26,6 +27,12 @@ namespace Cash_Inspection.Controllers
                                                                                     {
                                                                                         return db.Users.Find(User.Identity.GetUserId()).TotalMoney;
                                                                                     }
+        public JsonResult Pie()
+        {
+            string id = User.Identity.GetUserId();
+            var qu = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
+            return Json(new { Countries = qu.ToList() },JsonRequestBehavior.AllowGet);
+        }
 
         
 
@@ -37,6 +44,7 @@ namespace Cash_Inspection.Controllers
         public ActionResult Index()
         {
             ViewBag.TotalMoney = db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+            ViewBag.Log = _Manager.Trans.GetUserLog(HttpContext);
             string id = User.Identity.GetUserId();
             var q = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
 
@@ -78,10 +86,21 @@ namespace Cash_Inspection.Controllers
             
             if (ModelState.IsValid)
             {
-                _Manager.Categories.Create(category,HttpContext);
-                _Manager.Trans.TotalToCategoryTransaction(HttpContext, category);
-                _Manager.Save();
-                return RedirectToAction("Index");
+                ApplicationUser user = db.Users.Find(HttpContext.User.Identity.GetUserId());
+                if (category.NumberofMoney>user.TotalMoney)
+                {
+                    ViewBag.ResourcesLessError = "Не возможно провести операцию,у вас не хватает средств на проиндексированном счету";
+                    RedirectToAction("Create", "Categories");
+                }
+                else
+                {
+                    _Manager.Categories.Create(category, HttpContext);
+                    _Manager.Trans.TotalToCategoryTransaction(HttpContext, category);
+                    _Manager.Save();
+                    return RedirectToAction("Index");
+                }
+
+                
             }
 
             return View(category);

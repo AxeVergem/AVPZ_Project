@@ -41,10 +41,10 @@ namespace Cash_Inspection.Controllers
         }
 
         // GET: Subcategories/Create
-        public ActionResult Create(int id)
+        public ActionResult CreateImp(int id)
         {      
             ViewBag.id=id;
-            return View(new Subcategory() { CategoryId = id ,Value=0 });
+            return View(new Subcategory() { CategoryId = id});
         }
 
         // POST: Subcategories/Create
@@ -52,18 +52,52 @@ namespace Cash_Inspection.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Value,CategoryId,Comment")] Subcategory subcategory)
+        public ActionResult CreateImp([Bind(Include = "Id,Title,Value,CategoryId,Comment")] Subcategory subcategory)
         {
             if (ModelState.IsValid)
             {
-               Category Cat= _Manager.Categories.Get(subcategory.CategoryId);                        
-                _Manager.Subcategories.Create(subcategory, HttpContext);
-                _Manager.Trans.CategoryToSubTransaction(HttpContext, Cat, subcategory);
-                _Manager.Save();
-                return RedirectToAction("Index");
+                 
+               Category Cat= _Manager.Categories.Get(subcategory.CategoryId);
+                if (subcategory.Value >Cat.NumberofMoney)
+                {
+                    ViewBag.ResourcesLessError = "Не возможно провести операцию,у вас не хватает средств на проиндексированном счету категории";
+                    RedirectToAction("Create", "Subcategories");
+                }
+                else
+                {
+                    _Manager.Subcategories.CreateImp(subcategory, HttpContext);
+                    _Manager.Trans.CategoryToSubTransactionAdd(HttpContext, Cat, subcategory);
+                    _Manager.Save();
+                    return RedirectToAction("Index");
+                }                  
+
             }             
             return View(subcategory);
-        } 
+        }
+        public ActionResult CreateUmp(int id)
+        {
+            ViewBag.id = id;
+            return View(new Subcategory() { CategoryId = id });
+        }
+               [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateUmp([Bind(Include = "Id,Title,Value,CategoryId,Comment")] Subcategory subcategory)
+        {
+            if (ModelState.IsValid)
+            {
+                
+               Category Cat= _Manager.Categories.Get(subcategory.CategoryId);         
+                    ViewBag.ResourcesLessError = "Не возможно провести операцию,у вас не хватает средств на проиндексированном счету категории";
+                    RedirectToAction("Create", "Subcategories");   
+                    _Manager.Subcategories.CreateUmp(subcategory, HttpContext);
+                    _Manager.Trans.CategoryToSubTransactionRemove(HttpContext, Cat, subcategory);
+                    _Manager.Save();
+                    return RedirectToAction("Index");
+               
+
+            }             
+            return View(subcategory);
+        }
         // GET: Subcategories/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {

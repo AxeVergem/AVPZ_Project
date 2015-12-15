@@ -12,8 +12,10 @@ namespace Cash_Inspection.Models
         public int Id { get; set; }
 
         [Display(Name = "Название категории")]
+      
         public string Title { get; set; }
-        [Display(Name = "Лимит стредств")]
+        [Display(Name = "Лимит стредств")]          
+        
         public decimal NumberofMoney { get; set; }
 
         public virtual ICollection<Subcategory> ListSubcategory { get; set; }
@@ -27,11 +29,10 @@ namespace Cash_Inspection.Models
 
         [Display(Name = "Содержание")]
         public string Title { get; set; }
-
-        [Display(Name = "Стоимость")]
+        [Display(Name = "Стоимость")]          
         public decimal Value { get; set; }
         [Display(Name = "Комментарий")]
-        public string Comment { get; set; }
+        public string Text { get; set; }
         public DateTime Date { get; set; }
         public virtual int CategoryId { get; set; }
         public virtual string UserId { get; set; }

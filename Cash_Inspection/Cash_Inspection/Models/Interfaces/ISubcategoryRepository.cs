@@ -12,7 +12,8 @@ namespace Cash_Inspection.Models
 
         IEnumerable<Subcategory> GetAll(System.Web.HttpContextBase http,Category cat);
         Subcategory Get(int id);
-        void Create(Subcategory item, System.Web.HttpContextBase http);
+        void CreateImp(Subcategory item, System.Web.HttpContextBase http);
+        void CreateUmp(Subcategory item, System.Web.HttpContextBase http);
         void Update(Subcategory item);
         void Delete(int id);
     }

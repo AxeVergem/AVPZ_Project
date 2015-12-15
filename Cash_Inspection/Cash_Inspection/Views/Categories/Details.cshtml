@@ -22,15 +22,14 @@
                                 <th>Комментарий</th>
                                 <th>дата</th>
                             </tr>
-                        </thead>
-                        
+                        </thead>                        
                         @foreach (Subcategory item in Model.ListSubcategory)
                         {
                                 <tbody >
                                     <tr>
                                         <td>@item.Title</td>
                                         <td>@item.Value</td>
-                                        <th>@item.Comment</th>
+                                        <th>@item.Text</th>
                                         <td>@item.Date</td>
                                     </tr>
                                 </tbody>                           
@@ -43,7 +42,8 @@
 
                 </div>
                 <div class="row">
-                    <a href="@Url.Action("Create", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">add</i></a>
+                    <a href="@Url.Action("CreateImp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">remove</i></a>
+                    <a href="@Url.Action("CreateUmp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">add</i></a>
                 </div>
             </div>
 

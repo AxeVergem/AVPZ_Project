@@ -1,30 +1,224 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET 4 MVC 5</h1>
-    <p class="lead">POGNALi</p>
-    <div class="row">
-        <ul class="collapsible" data-collapsible="accordion">
-            <li>
-                <div class="collapsible-header"><i class="material-icons">person_pin</i>Category</div>
-                <div class="collapsible-body"><a class="waves-effect waves-light ibtn" href="/Categories">Learn more</a></div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">today</i>Subcategory</div>
-                <div class="collapsible-body"><a class="waves-effect waves-light ibtn" href="/Subcategories">Learn more</a></div>
-            </li>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="fixed-action-btn horizontal click-to-toggle " style="top: 25px; right: 25px;">
+        <a class="btn-floating btn-large deep-purple accent-1">
+            <i class="large mdi-navigation-menu"></i>
+        </a>
+        <ul>
+            <li><a class="btn-floating deep-purple accent-1" href="#about"><i class="material-icons">info_outline</i></a></li>
+            <li><a class="btn-floating deep-purple accent-1" href="#more"><i class="material-icons">code</i></a></li>
+            <li><a class="btn-floating deep-purple accent-1" href="#price"><i class="material-icons">credit_card</i></a></li>
+            <li><a class="btn-floating deep-purple accent-1" href="#support"><i class="material-icons">live_help</i></a></li>
         </ul>
     </div>
-</div>
+    <section id="home" class="container">
+        <div class="responsive-video">
+            <video autoplay loop>
+                <source src="src/bg-video.mp4">
+            </video>
+        </div>
+        <div class="home-element white-text">
+            <h1>Cash Inspection</h1>
+            <h2>We know, what to do with your money</h2>
+            <form class="container">
+                <div class="row">
+                    <div class="col s6 offset-s6">
+                        <div class="row">
+                            <div class="input-field">
+                                <input id="password" type="password" class="validate  white-text">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field white-text">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn-large deep-purple accent-1">LOG IN</a>
+                        <a class="waves-effect waves-light btn-large deep-purple accent-1 ">SIGN IN</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <section class="z-depth-4" id="about">
+            <div class="container ">
+                <div class="section-white">
+                    <div class="row-container row">
+                        <h2 class="col s5 offset-s7">O СЕРВИСЕ</h2>
+                        <p class="flow-text col s6 push-s6">
+                            Порой, в нашем современном мире тяжело контролировать свои финансовые операции, особенно, если вы всегда находитесь в движении.
+                            Исходя из вышесказанного, к нам пришла идея, для создания сервиса учета финансов, который будет контролировать все транзакции, совершенные вами.
+                            Наш сервис для учета личных финансов, является максимально удобным и простым для использования. Он позволяет планировать ваш бюджет, вести учет доходов, расходов, долгов, а также, планирование платежей. Также, присутствует функция, которая отображает в виде графиков ваши доходы/расходы за определенный промежуток времени.
+                        </p>
+                        <i class="large material-icons col s6 pull-s6">view_list</i>
+                        <p class='flow-text col s6 pull-s6'>распределения денежных средств по дням</p>
+                        <i class="large material-icons col s6 pull-s6">trending_up</i>
+                        <p class="flow-text col s6 pull-s6">подробная статистика и графики</p>
+                        <i class="large material-icons col s6 pull-s6">track_changes</i>
+                        <p class="flow-text col s6 pull-s6">быстродействие</p>
+                        <i class="large material-icons col s6 pull-s6">visibility</i>
+                        <p class="flow-text col s6 pull-s6">простой интерфейс</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        </div>
+        <section id="more">
+            <div class="slider">
+                <ul class="slides">
+                    <li>
+                        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+                        <div class="caption left-align">
+                            <h3>Left Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+                        <div class="caption right-align">
+                            <h3>Right Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="price">
+            <div class="container">
+                <div class="row">
+                    <h1>Price table</h1>
+                    <table class="pesponsive-table striped col s12 offset-s5">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>FREE</th>
+                                <th>Advanced</th>
+                                <th>VIP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Best</th>
+                                <th>+</th>
+                                <th>+</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>+</th>
+                                <th>+</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>+</th>
+                                <th>+</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>+</th>
+                                <th>+</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>-</th>
+                                <th>+</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>-</th>
+                                <th>+</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>-</th>
+                                <th>-</th>
+                                <th>+</th>
+                            </tr>
+                            <tr>
+                                <th>Best</th>
+                                <th>-</th>
+                                <th>-</th>
+                                <th>+</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <div class="parallax-container">
+            <div class="parallax"><img src="src/parallax1.jpg" alt=""></div>
+        </div>
+        <footer class="page-footer" id="support">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Support</h5>
+                        <p class="white-text">type your question</p>
+                        <i class="material-icons prefix ">mode_edit</i>
+                        <textarea id="icon_prefix2" class="materialize-textarea white"></textarea>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Contact</h5>
+                        <ul>
+                            <li>VK</li>
+                            <li>Facebook</li>
+                            <li>linkedIn</li>
+                            <li>Gmail</li>
+                            <li>Mail</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container"><a href="#">byZevavi</a></div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            YOQ PACANi
-        </p>
-        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
-    </div>
-</div>
+         $(document).ready(function(){
+         $('.parallax').parallax();});
+        </script>
+        <script>
+$('.click-menu-element').click(function(){
+         $('html, body').animate({scrollTop:$('#elementId').position().top}, 20000);
+         });
+        </script>
+        <script>
+    $(document).ready(function(){
+         $('.slider').slider({full_width: true},{indicators:false});
+         });
+        </script>
+</body>
+</html>

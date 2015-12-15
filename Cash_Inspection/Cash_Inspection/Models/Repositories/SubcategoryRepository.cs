@@ -36,7 +36,7 @@ namespace Cash_Inspection.Models
             return db.SubcategoryDb.Find(id);
         }
 
-        public void Create(Subcategory Subcategory,System.Web.HttpContextBase http)
+        public void CreateUmp(Subcategory Subcategory,System.Web.HttpContextBase http)
         {
             db.SubcategoryDb.Add(Subcategory = new Subcategory()
             {
@@ -45,10 +45,22 @@ namespace Cash_Inspection.Models
                 Value = Subcategory.Value,
                 Date = DateTime.Now,
                 CategoryId = Subcategory.CategoryId,
-                Comment = Subcategory.Comment,
-      
+                Text = Subcategory.Text,        
+                UserId = http.User.Identity.GetUserId()                 
+            });
+            db.SubcategoryDb.Add(Subcategory);
+        }
+        public  void CreateImp(Subcategory Subcategory, System.Web.HttpContextBase http)
+        {
+            db.SubcategoryDb.Add(Subcategory = new Subcategory()
+            {
+                Id = Subcategory.Id,
+                Title = Subcategory.Title,
+                Value = -Subcategory.Value,
+                Date = DateTime.Now,
+                CategoryId = Subcategory.CategoryId,
+                Text = Subcategory.Text,
                 UserId = http.User.Identity.GetUserId()
-                
             });
             db.SubcategoryDb.Add(Subcategory);
         }
