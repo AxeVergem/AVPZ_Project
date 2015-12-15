@@ -37,20 +37,46 @@ namespace Cash_Inspection.Models
             Category categoryForTrans = _db.CategoryDb.Find(category.Id);
             user.TotalMoney -= categoryForTrans.NumberofMoney; 
         }
-        public void CategoryToSubTransaction(HttpContextBase http, Category category, Subcategory subcategory)
+        public void CategoryToSubTransactionAdd(HttpContextBase http, Category category, Subcategory subcategory)
         {
             string id = http.User.Identity.GetUserId();
             Category categoryForTrans = _db.CategoryDb.Find(category.Id);
-            category.NumberofMoney += -subcategory.Value;
+            category.NumberofMoney -= subcategory.Value;
         }
-         public void ImplUserResources(HttpContextBase http,Subcategory subC)
+        public void CategoryToSubTransactionRemove(HttpContextBase http, Category category, Subcategory subcategory)
         {
-            string ID = http.User.Identity.GetUserId();
-            
+            string id = http.User.Identity.GetUserId();
+            Category categoryForTrans = _db.CategoryDb.Find(category.Id);
+            category.NumberofMoney += subcategory.Value;
+        }
+        public void ImplUserResources(HttpContextBase http,UserLogEntry entry)
+        {
+            string ID = http.User.Identity.GetUserId();       
             
              ApplicationUser user= _db.Users.Find(ID);
-             user.TotalMoney += subC.Value;
+             user.TotalMoney += entry.Value;
             _db.Entry(user).State = EntityState.Modified;
+        }
+        public void CreateLogEntry(HttpContextBase HttpContext,UserLogEntry Entry)
+        {
+            UserLogEntry UsEntry = new UserLogEntry()
+            {
+                Date = DateTime.Now,
+                Comment = Entry.Comment,
+                Value = Entry.Value,
+                UserId = HttpContext.User.Identity.GetUserId(),
+                Id=Entry.Id
+            };
+            _db.UserLog.Add(UsEntry);           
+        }
+        public IEnumerable<UserLogEntry> GetUserLog(HttpContextBase http)
+        {
+            string userID = http.User.Identity.GetUserId();
+            List<UserLogEntry> log = new List<UserLogEntry>();
+            var qu = from b in _db.UserLog where b.UserId == userID select b;
+            log = qu.ToList();
+            return log;
+                      
         }
     }
 }

@@ -19,8 +19,10 @@ namespace Cash_Inspection.Models
   public  interface IResourcesRepository
     {
         void TotalToCategoryTransaction(HttpContextBase http, Category category);
-        void CategoryToSubTransaction(HttpContextBase http, Category category, Subcategory subcategory);
-        void ImplUserResources(HttpContextBase http,Subcategory subC);
+        void CategoryToSubTransactionAdd(HttpContextBase http, Category category, Subcategory subcategory);
+        void CategoryToSubTransactionRemove(HttpContextBase http, Category category, Subcategory subcategory);
+        void ImplUserResources(HttpContextBase http,UserLogEntry subC);
+        IEnumerable<UserLogEntry> GetUserLog(HttpContextBase http);
 
     }
 }

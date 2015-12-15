@@ -44,10 +44,11 @@ namespace Cash_Inspection.Models
 
         public Category Get(int id)
         {
+            var result = _db.CategoryDb.Find(id);
             var qu = from b in _db.CategoryDb where b.Id == id select b;
             if (qu.ToList()[0] == null)
-                return null;                     
-            return qu.ToList()[0];  
+                return null;
+            return result;  
         }
 
         public void Create(Category Category,System.Web.HttpContextBase HttpContext)

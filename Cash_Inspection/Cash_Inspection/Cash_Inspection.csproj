@@ -175,26 +175,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511281235392_kk.cs" />
-    <Compile Include="Migrations\201511281235392_kk.Designer.cs">
-      <DependentUpon>201511281235392_kk.cs</DependentUpon>
+    <Compile Include="Migrations\201512142119489_jj.cs" />
+    <Compile Include="Migrations\201512142119489_jj.Designer.cs">
+      <DependentUpon>201512142119489_jj.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512122347546_jkl.cs" />
-    <Compile Include="Migrations\201512122347546_jkl.Designer.cs">
-      <DependentUpon>201512122347546_jkl.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Classes\UserLogEntry.cs" />
     <Compile Include="Models\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Models\Interfaces\ISubcategoryRepository.cs" />
     <Compile Include="Models\Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201511181032101_FFF.cs" />
-    <Compile Include="Migrations\201511181032101_FFF.Designer.cs">
-      <DependentUpon>201511181032101_FFF.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511261326084_gg.cs" />
-    <Compile Include="Migrations\201511261326084_gg.Designer.cs">
-      <DependentUpon>201511261326084_gg.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Classes\AccountViewModels.cs" />
     <Compile Include="Models\Classes\Category.cs" />
@@ -207,12 +196,17 @@
     <Compile Include="Models\Repositories\IdentityUnitOfWork.cs" />
     <Compile Include="Models\Repositories\SubcategoryRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Content\main.css" />
+    <Content Include="src\bg-video.mp4" />
+    <Content Include="src\parallax1.jpg" />
+    <Content Include="src\parallax2.jpg" />
+    <Content Include="src\parallax3.jpg" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Subcategories\Create.cshtml" />
+    <Content Include="Views\Subcategories\CreateImp.cshtml" />
     <Content Include="Views\Subcategories\Delete.cshtml" />
     <Content Include="Views\Subcategories\Details.cshtml" />
     <Content Include="Views\Subcategories\Edit.cshtml" />
@@ -243,6 +237,7 @@
     <Content Include="fonts\Roboto-Thin.ttf" />
     <Content Include="fonts\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto-Thin.woff2" />
+    <None Include="Properties\PublishProfiles\StudCoin.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -293,20 +288,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\AddTotalResources.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511181032101_FFF.resx">
-      <DependentUpon>201511181032101_FFF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511261326084_gg.resx">
-      <DependentUpon>201511261326084_gg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511281235392_kk.resx">
-      <DependentUpon>201511281235392_kk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512122347546_jkl.resx">
-      <DependentUpon>201512122347546_jkl.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\Subcategories\CreateUmp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -317,6 +299,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512142119489_jj.resx">
+      <DependentUpon>201512142119489_jj.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

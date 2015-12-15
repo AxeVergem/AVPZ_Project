@@ -1,52 +1,139 @@
 ﻿@model IEnumerable<Cash_Inspection.Models.Category>
-   @using Microsoft.AspNet.Identity;
-   @using Cash_Inspection.Models; 
+@using Microsoft.AspNet.Identity;
+@using Cash_Inspection.Models;
 
 @{
     ViewBag.Title = "Index";
     DataEntities db = new DataEntities();
 }
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Название модали</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
-   
 <div class="container" style="min-height:490px;">
     @*внутреняя компоновка*@
     <div class="row">
         <div class="col-md-12">
             <p>
-                @Html.Action("TotalMoney")
+                @Html.Action("TotalMoney") <a href='@Url.Action("AddTotalResources","Account")'><i class="material-icons">settings</i></a>
             </p>
-            <a href='@Url.Action("AddTotalResources","Account")'><i class="material-icons">settings</i></a>
+
             <p>
-               
+
                 <a class="ibtn waves-effect waves-light ibtn" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
             </p>
         </div>
-        
+
     </div>
+
     @*основной контент*@
-        <div class="row">
-            <div class="col-md-7" style="overflow-y:scroll;max-height:25em">
-                @foreach (var item in Model)
-                {
-                    <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="eid_menu_right ">
-                                <a href='@Url.Action("Edit","Categories", new { id = item.Id })'><i class="material-icons">settings</i></a>
-                                <a href='@Url.Action("Details","Categories", new { id = item.Id })'><i class="material-icons">info_outline</i></a>
-                                <a href='@Url.Action("Delete","Categories", new { id = item.Id })'><i class="material-icons">delete</i></a>
-                            </div>
-                            <div class="collapsible-header"><i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)  =  @Html.DisplayFor(modelItem => item.NumberofMoney) грн</div>                            
-                        </li>
-                    </ul>   
-                }
-            </div>
-        <div class="col-md-5">
-            тут будет график
-        </div>
+    <div class="row">
+        <div class="col-md-7" style="overflow-y:scroll;max-height:25em">
+    @foreach (var item in Model)
+    {
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="eid_menu_right ">
+                    <a href='@Url.Action("Edit", "Categories", new { id = item.Id })'><i class="material-icons">settings</i></a>
+                    <a href='@Url.Action("Details", "Categories", new { id = item.Id })'><i class="material-icons">info_outline</i></a>
+                    @*<a href='@Url.Action("#","#", new { id = item.Id })'>*@<i class="material-icons" data-toggle="modal" data-target="#myModal">delete</i>@*</a>*@
+                </div>
+                <div class="collapsible-header"><i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)  =  @Html.DisplayFor(modelItem => item.NumberofMoney) грн</div>
+            </li>
+        </ul>
+    }
     </div>
+        
 
-   
+        
+            <div class="col-md-5">
+                
+                
+                
+                <div class="row" id="chart_div">
+                </div>
+                <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                <script type="text/javascript">
+      // Подгружаем API
+      google.load('visualization', '1.0', { 'packages': ['corechart'] });
 
-</div>
+      // Устанавливаем callback
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+          var options = {
+              'title': 'Статистика:',
+              'width': 400,
+              'height': 300,
+              'pieHole': 0.3,
+          };
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Категория');
+          data.addColumn('number', 'сумма');
+
+          $.getJSON('@Url.Action("Pie", "Categories")', null,
+                                                        function (result) {
+              if (result.Countries.length) {
+                  $.each(result.Countries, function (index, c)
+                  {
+                      data.addRow([c.Title, c.NumberofMoney]);
+                  });
+                  // Отрисовка диаграммы
+                  var chart = new google.visualization.PieChart(
+                                        document.getElementById('chart_div'));
+                  chart.draw(data, options);
+              };
+          });
+      }
+                </script>
+                <div class="row">
+                    <div class="" style="overflow-y:scroll;max-height:22em">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Средства</th>
+                                    <th>Комментарий</th>
+                                    <th>Дата</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in ViewBag.Log)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.Value</td>
+                                        <th>@item.Comment</th>
+                                        <td>@item.Date</td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
 

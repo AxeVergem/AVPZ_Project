@@ -14,13 +14,6 @@ using Cash_Inspection.Models;
 
 namespace Cash_Inspection.Controllers
 {
-
-
-
-
-
-
-
     [Authorize]
     public class AccountController : Controller
     {
@@ -43,14 +36,12 @@ namespace Cash_Inspection.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddTotalResources([Bind(Include = "Id,Value,Comment,CategoryId")] Subcategory subcat)
+        public ActionResult AddTotalResources([Bind(Include = "Id,Value,Comment,CategoryId")] UserLogEntry entry)
         {
-            subcat.CategoryId = 789;
-            _Manager.Subcategories.Create(subcat, HttpContext);
-            _Manager.Trans.ImplUserResources(HttpContext, subcat);
-            _Manager.Save();
-
-            return View(subcat);
+            _Manager.Trans.CreateLogEntry(HttpContext, entry);
+            _Manager.Trans.ImplUserResources(HttpContext, entry);
+            _Manager.Save(); 
+            return RedirectToAction("Index", "Categories");
         }
         #endregion
 
@@ -130,7 +121,7 @@ namespace Cash_Inspection.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index","Categories");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -216,7 +207,7 @@ namespace Cash_Inspection.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Categories");
                 }
                 AddErrors(result);
             }

@@ -26,9 +26,11 @@ namespace Cash_Inspection.Models
     public class DataEntities : IdentityDbContext<ApplicationUser>
     {
 
-        public DataEntities() : base("DefaultConnection") { }
+        public DataEntities() : base("Default") { }
         public virtual DbSet<Category> CategoryDb { get; set; }
         public virtual DbSet<Subcategory> SubcategoryDb { get; set; }
+        public virtual DbSet<UserLogEntry> UserLog { get; set; }
+       
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
