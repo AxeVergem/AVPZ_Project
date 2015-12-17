@@ -18,10 +18,10 @@ namespace Cash_Inspection.Models
         
         public decimal NumberofMoney { get; set; }
 
-        public virtual ICollection<Subcategory> ListSubcategory { get; set; }
+        public ICollection<Subcategory> ListSubcategory { get; set; }
 
-        public virtual string iUserName { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public  string iUserName { get; set; }
+        public  ApplicationUser ApplicationUser { get; set; }
     }
     public class Subcategory
     {
@@ -34,8 +34,8 @@ namespace Cash_Inspection.Models
         [Display(Name = "Комментарий")]
         public string Text { get; set; }
         public DateTime Date { get; set; }
-        public virtual int CategoryId { get; set; }
-        public virtual string UserId { get; set; }
-        public virtual Category Category { get; set; }
+        public  int CategoryId { get; set; }
+        public  string UserId { get; set; }
+        public  Category Category { get; set; }
     }
 }

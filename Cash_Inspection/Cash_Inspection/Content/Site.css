@@ -84,3 +84,7 @@ section {
 	margin: 0;
 	text-align: center;
 }
+#chart_div{
+    /*min-height:300px;
+    min-width:500px;*/
+}

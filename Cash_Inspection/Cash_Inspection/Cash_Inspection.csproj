@@ -179,6 +179,22 @@
     <Compile Include="Migrations\201512142119489_jj.Designer.cs">
       <DependentUpon>201512142119489_jj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512162040558_yy.cs" />
+    <Compile Include="Migrations\201512162040558_yy.Designer.cs">
+      <DependentUpon>201512162040558_yy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512171740018_plu.cs" />
+    <Compile Include="Migrations\201512171740018_plu.Designer.cs">
+      <DependentUpon>201512171740018_plu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512171748089_hjk.cs" />
+    <Compile Include="Migrations\201512171748089_hjk.Designer.cs">
+      <DependentUpon>201512171748089_hjk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512171838103_uiui.cs" />
+    <Compile Include="Migrations\201512171838103_uiui.Designer.cs">
+      <DependentUpon>201512171838103_uiui.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Classes\UserLogEntry.cs" />
     <Compile Include="Models\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
@@ -266,7 +282,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -289,6 +304,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\AddTotalResources.cshtml" />
     <Content Include="Views\Subcategories\CreateUmp.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -303,6 +319,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512142119489_jj.resx">
       <DependentUpon>201512142119489_jj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512162040558_yy.resx">
+      <DependentUpon>201512162040558_yy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512171740018_plu.resx">
+      <DependentUpon>201512171740018_plu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512171748089_hjk.resx">
+      <DependentUpon>201512171748089_hjk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512171838103_uiui.resx">
+      <DependentUpon>201512171838103_uiui.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
