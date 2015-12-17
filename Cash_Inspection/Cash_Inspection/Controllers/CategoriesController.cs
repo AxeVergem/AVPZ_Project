@@ -34,7 +34,11 @@ namespace Cash_Inspection.Controllers
             return Json(new { Countries = qu.ToList() },JsonRequestBehavior.AllowGet);
         }
 
-        
+        public void ChangeID(int? id)
+        {
+            ViewBag.Id = id;
+        }
+
 
 
         #endregion
@@ -137,24 +141,8 @@ namespace Cash_Inspection.Controllers
             return View(category);
         }
 
-        // GET: Categories/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = _Manager.Categories.Get((int)id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
+        // GET: Categories/Delete/5        
 
-        // POST: Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.CategoryDb.Find(id);

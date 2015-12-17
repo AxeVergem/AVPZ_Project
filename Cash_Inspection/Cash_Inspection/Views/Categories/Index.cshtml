@@ -6,23 +6,11 @@
     ViewBag.Title = "Index";
     DataEntities db = new DataEntities();
 }
-<div class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Название модали</h4>
-            </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Сохранить изменения</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+
+
+<!-- Button trigger modal -->
+
+
 
 
 <div class="container" style="min-height:490px;">
@@ -35,7 +23,7 @@
            
             <p>
 
-                <a class="ibtn waves-effect waves-light ibtn" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
+                <a class="ibtn waves-effect waves-light ibtn" style="width:55%" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
             </p>
         </div>
 
@@ -43,6 +31,7 @@
 
     @*основной контент*@
     <div class="row">
+
         <div class="col-md-7" style="overflow-y:scroll;max-height:45em">
             @foreach (var item in Model)
             {
@@ -51,11 +40,31 @@
                         <div class="eid_menu_right ">
                             <a href='@Url.Action("Edit","Categories", new { id = item.Id })'><i class="material-icons">settings</i></a>
                             <a href='@Url.Action("Details","Categories", new { id = item.Id })'><i class="material-icons">info_outline</i></a>
-                            <a href='@Url.Action("#","#", new { id = item.Id })'><i class="material-icons" data-toggle="modal" data-target="#myModal">delete</i></a>
+                            <a data-toggle="modal" data-target="#myModal"><i class="material-icons">delete</i></a>
                         </div>
                         <div class="collapsible-header"><i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)  =  @Html.DisplayFor(modelItem => item.NumberofMoney) грн</div>
                     </li>
                 </ul>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">Удаление категории</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Вы действительно хотите удалить данную категорию?Это может привести к потере хранимых в ней средств.</p>
+                                <p >@item.Title : @item.NumberofMoney грн</p>
+                                
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                <a class="btn btn-primary" href='@Url.Action("DeleteConfirmed","Categories", new { id = item.Id})'>Удалить</a>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
             }
         </div>
         <div class="col-md-5">
@@ -120,6 +129,7 @@
                                     <td>@item.Date</td>
                                 </tr>
                             </tbody>
+
                         }
                     </table>
                 </div>

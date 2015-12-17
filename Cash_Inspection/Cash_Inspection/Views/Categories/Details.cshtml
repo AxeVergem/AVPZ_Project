@@ -44,7 +44,7 @@
 
                 </div>
                             <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-                            <script type="text/javascript">
+                                         <script type="text/javascript">
                                                                   // Подгружаем API
                                                                   google.load('visualization', '1.0', { 'packages': ['corechart'] });
                                                                   // Устанавливаем callback
@@ -55,12 +55,8 @@
                                                                       var options = {
                                                                           'title': 'Статистика:',
                                                                           'width': 550,
-                                                                          'height': 350,
-                                                                          'title:': 
-
-                                                                          
-
-                                                                        };
+                                                                          'height': 350
+                                                                      };
 
                                                                       var data = new google.visualization.DataTable();
                                                                       data.addColumn('string', 'Категория');
@@ -80,7 +76,11 @@
                                                                           };
                                                                       });
                                                                   }
-                            </script>
+                                            </script>
+
+
+
+
                 <div class="row">
                     <a href="@Url.Action("CreateImp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">remove</i></a>
                     <a href="@Url.Action("CreateUmp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">add</i></a>
