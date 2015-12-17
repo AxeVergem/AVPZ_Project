@@ -37,6 +37,15 @@ namespace Cash_Inspection.Models
             Category categoryForTrans = _db.CategoryDb.Find(category.Id);
             user.TotalMoney -= categoryForTrans.NumberofMoney; 
         }
+        public void TotalToCategoryTransThowTheCat(HttpContextBase http, Category category,decimal res)
+        {
+            string id = http.User.Identity.GetUserId();
+
+            ApplicationUser user = _db.Users.Find(id);
+            Category categoryForTrans = _db.CategoryDb.Find(category.Id);
+            category.NumberofMoney += res;
+            user.TotalMoney -= res;
+        }
         public void CategoryToSubTransactionAdd(HttpContextBase http, Category category, Subcategory subcategory)
         {
             string id = http.User.Identity.GetUserId();

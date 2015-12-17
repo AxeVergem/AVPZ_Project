@@ -6,12 +6,13 @@
     IdentityUnitOfWork _Manager = new IdentityUnitOfWork();
 }
 
-<h2>@ViewBag.CategoryName</h2>
 
-<div class="container">
+
+<div class="container" style="min-height:490px;">
     <div class="row">
         @*журнал*@
-        <h4>Лимит средств:@Model.NumberofMoney</h4>
+        <h2>@ViewBag.CategoryName</h2>
+        <h4>Cредства:@Model.NumberofMoney</h4>
     
                 <div class="col-md-6" style="overflow-y:scroll;max-height:22em">
                     <table class="table table-hover">
@@ -82,8 +83,8 @@
 
 
                 <div class="row">
-                    <a href="@Url.Action("CreateImp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">remove</i></a>
-                    <a href="@Url.Action("CreateUmp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">add</i></a>
+                    <a class="ibtn waves-effect waves-light ibtn" style="width:49%" href="@Url.Action("CreateImp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">remove</i></a>
+                    <a class="ibtn waves-effect waves-light ibtn" style="width:49%" href="@Url.Action("CreateUmp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">add</i></a>
                 </div>
             </div>
 

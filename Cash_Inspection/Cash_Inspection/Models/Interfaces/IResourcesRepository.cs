@@ -21,6 +21,7 @@ namespace Cash_Inspection.Models
         void TotalToCategoryTransaction(HttpContextBase http, Category category);
         void CategoryToSubTransactionAdd(HttpContextBase http, Category category, Subcategory subcategory);
         void CategoryToSubTransactionRemove(HttpContextBase http, Category category, Subcategory subcategory);
+        void TotalToCategoryTransThowTheCat(HttpContextBase http, Category category, decimal res);
         void ImplUserResources(HttpContextBase http,UserLogEntry subC);
         IEnumerable<UserLogEntry> GetUserLog(HttpContextBase http);
 

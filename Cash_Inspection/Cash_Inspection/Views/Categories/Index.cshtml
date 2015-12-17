@@ -17,14 +17,13 @@
     @*внутреняя компоновка*@
     <div class="row">
         <div class="col-md-12">
-            <p>
-                @Html.Action("TotalMoney") <a href='@Url.Action("AddTotalResources","Account")'><i class="material-icons">settings</i></a>
-            </p>
-           
-            <p>
+            <div class="col-md-6">
+                <a class="ibtn waves-effect waves-light ibtn" style="width:100%" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
+            </div>
+            <div class="col-md-6 pull-right text-right">
+               <h5> Общие средства:@Html.Action("TotalMoney") <a href='@Url.Action("AddTotalResources","Account")'><i class="material-icons">credit_card</i></a></h5>
+            </div>
 
-                <a class="ibtn waves-effect waves-light ibtn" style="width:55%" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
-            </p>
         </div>
 
     </div>

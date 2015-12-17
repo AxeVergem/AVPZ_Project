@@ -83,6 +83,7 @@ namespace Cash_Inspection.Controllers
                 else
                 {
                     _Manager.Subcategories.CreateImp(subcategory, HttpContext);
+                    
                     _Manager.Trans.CategoryToSubTransactionAdd(HttpContext, Cat, subcategory);
                     _Manager.Save();
                     return RedirectToAction("Index");
@@ -95,6 +96,7 @@ namespace Cash_Inspection.Controllers
         {
             ViewBag.id = id;
             return View(new Subcategory() { CategoryId = id });
+
         }
                [HttpPost]
         [ValidateAntiForgeryToken]
@@ -107,7 +109,9 @@ namespace Cash_Inspection.Controllers
                     ViewBag.ResourcesLessError = "Не возможно провести операцию,у вас не хватает средств на проиндексированном счету категории";
                     RedirectToAction("Create", "Subcategories");   
                     _Manager.Subcategories.CreateUmp(subcategory, HttpContext);
-                    _Manager.Trans.CategoryToSubTransactionRemove(HttpContext, Cat, subcategory);
+                
+                _Manager.Trans.TotalToCategoryTransThowTheCat(HttpContext,Cat,subcategory.Value)   ;
+                _Manager.Trans.CategoryToSubTransactionRemove(HttpContext, Cat, subcategory);
                     _Manager.Save();
                     return RedirectToAction("Index");
                
