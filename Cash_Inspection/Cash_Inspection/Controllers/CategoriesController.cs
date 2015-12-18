@@ -11,10 +11,25 @@ using Microsoft.AspNet.Identity;
 
 namespace Cash_Inspection.Controllers
 {
-    
+    [Authorize]
     public class CategoriesController : Controller
     {
-        
+        protected bool UserIsAuthenticated
+        {
+            get
+            {
+                return System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            }
+        }
+
+        protected  string UserId
+        {
+            get
+            {
+                var result = (UserIsAuthenticated ? System.Web.HttpContext.Current.User.Identity.GetUserId() : null);
+                return result;
+            }
+        }
         private DataEntities db = new DataEntities();
         IdentityUnitOfWork _Manager= new IdentityUnitOfWork();
 
@@ -25,16 +40,21 @@ namespace Cash_Inspection.Controllers
                                                                                         /// </summary>                                                                                       
                                                                                     public Nullable<decimal> TotalMoney()
                                                                                     {
-                                                                                        return db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+                                                                                    if (UserIsAuthenticated)
+                                                                                    {
+                                                                                        return Math.Floor(db.Users.Find(UserId).TotalMoney);
+                                                                                    }
+                                                                                    return decimal.Zero;
+            
                                                                                     }
         public JsonResult Pie()
         {
             string id = User.Identity.GetUserId();
             var qu = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
-            return Json(new { Countries = qu.ToList() },JsonRequestBehavior.AllowGet);
+            return Json(qu,JsonRequestBehavior.AllowGet);
         }
 
-        
+
 
 
         #endregion
@@ -43,13 +63,16 @@ namespace Cash_Inspection.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.TotalMoney = db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.TotalMoney = db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+            }
             ViewBag.Log = _Manager.Trans.GetUserLog(HttpContext);
             string id = User.Identity.GetUserId();
             var q = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
 
             return View(q.ToList());
-            
+        
         }
 
         // GET: Categories/Details/5

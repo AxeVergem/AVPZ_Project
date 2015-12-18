@@ -28,15 +28,47 @@
 <div class="container" style="min-height:490px;">
     @*внутреняя компоновка*@
     <div class="row">
-        <div class="col-md-12">
-            <p>
-                @Html.Action("TotalMoney") <a href='@Url.Action("AddTotalResources","Account")'><i class="material-icons">settings</i></a>
-            </p>
-           
-            <p>
+        <div class="col-md-4">
+            <ul class="list-group">
+                @if (User.Identity.IsAuthenticated)
+                {
 
-                <a class="ibtn waves-effect waves-light ibtn" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
-            </p>
+                    <li class="list-group-item">
+                        Не распределено <b>средств</b>:
+                        <div class="badge">
+
+                            @Html.Action("TotalMoney")
+
+                        </div>
+                        <br>Распределено <b>средств</b>:
+                        <div class="badge">
+
+                            @Math.Floor(Model.Sum(x => x.ApplicationUser.ListCategory.Sum(s => s.NumberofMoney)/ x.ApplicationUser.ListCategory.Count))
+                        </div>
+                    </li>
+
+
+
+                    <li class="list-group-item">
+                        Добавить общие средства:<a href='@Url.Action("AddTotalResources","Account")'><i class="material-icons">add</i></a>
+                    </li>
+                }
+
+                @*@foreach (var item in Model)
+            {
+            <li class="list-group-item">@Html.DisplayFor(modell=>item.NumberofMoney)</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+            }*@
+            </ul>
+
+
+            <a class="ibtn waves-effect waves-light ibtn" href='@Url.Action("Create")'>Add Category<i class="material-icons">add</i></a>
+
+
+
+
+
         </div>
 
     </div>
@@ -51,52 +83,55 @@
                         <div class="eid_menu_right ">
                             <a href='@Url.Action("Edit","Categories", new { id = item.Id })'><i class="material-icons">settings</i></a>
                             <a href='@Url.Action("Details","Categories", new { id = item.Id })'><i class="material-icons">info_outline</i></a>
-                            <a href='@Url.Action("#","#", new { id = item.Id })'><i class="material-icons" data-toggle="modal" data-target="#myModal">delete</i></a>
+                            <a href='@Url.Action("Delete","Categories", new { id = item.Id })'><i class="material-icons" data-toggle="modal" data-target="#myModal">delete</i></a>
                         </div>
-                        <div class="collapsible-header"><i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)  =  @Html.DisplayFor(modelItem => item.NumberofMoney) грн</div>
+                        <div class="collapsible-header">
+                            <i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)  =  @Html.DisplayFor(modelItem => item.NumberofMoney) грн
+                        </div>
+                        
                     </li>
                 </ul>
             }
         </div>
         <div class="col-md-5">
             <div class="row">
-                <div id="chart_div" class="col-md-12" ><div style="position: relative;"><div dir="ltr" style="position: relative; width: 550px; height: 350px;"><div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;" aria-label="Диаграмма."><svg width="550" height="350" aria-label="Диаграмма." style="overflow: hidden;"><defs id="defs"></defs><rect x="0" y="0" width="550" height="350" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><text text-anchor="start" x="105" y="46.2" font-family="Arial" font-size="12" font-weight="bold" stroke="none" stroke-width="0" fill="#000000">Статистика:</text></g><g><rect x="334" y="67" width="111" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><rect x="334" y="67" width="111" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="351" y="77.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">zzz</text></g><circle cx="340" cy="73" r="6" stroke="none" stroke-width="0" fill="#3366cc"></circle></g></g><g><path d="M210,70A105,105,0,0,1,210,280A105,105,0,0,1,210,70M210,143.5A31.5,31.5,0,0,0,210,206.5A31.5,31.5,0,0,0,210,143.5Z" stroke="#ffffff" stroke-width="1" fill="#3366cc"></path><text text-anchor="start" x="194.5" y="179.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">100%</text></g><g></g></svg><div aria-label="Данные диаграммы в виде таблицы." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Категория</th><th>сумма</th></tr></thead><tbody><tr><td>zzz</td><td>213</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 360px; left: 560px; white-space: nowrap; font-family: Arial; font-size: 12px; font-weight: bold;">213 (100%)</div><div></div></div></div>
+                <div id="chart_div" class="col-md-4" ></div>
                 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-                                                                <script type="text/javascript">
-                                                      // Подгружаем API
-                                                      google.load('visualization', '1.0', { 'packages': ['corechart'] });
+                <script type="text/javascript">
+                // Подгружаем API
+                google.load('visualization', '1.0', { 'packages': ['corechart'] });
 
-                                                      // Устанавливаем callback
-                                                      google.setOnLoadCallback(drawChart);
+                // Устанавливаем callback
+                google.setOnLoadCallback(drawChart);
 
-                                                      function drawChart() {
+                function drawChart() {
 
-                                                          var options = {
-                                                              'title': 'Статистика:',
-                                                              'width': 550,
-                                                              'height': 350,
-                                                              'pieHole': 0.3,
-                                                          };
+                var options = {
+                    'title': 'Статистика:',
+                    'width': 450,
+                    'height': 350,
+                    'pieHole': 0.2,
+                     };
 
-                                                          var data = new google.visualization.DataTable();
-                                                          data.addColumn('string', 'Категория');
-                                                          data.addColumn('number', 'сумма');
+                        var data = new google.visualization.DataTable();
 
-                                                          $.getJSON('@Url.Action("Pie", "Categories")', null,
-                                                                                                        function (result) {
-                                                              if (result.Countries.length) {
-                                                                  $.each(result.Countries, function (index, c)
-                                                                  {
-                                                                      data.addRow([c.Title, c.NumberofMoney]);
-                                                                  });
-                                                                  // Отрисовка диаграммы
-                                                                  var chart = new google.visualization.PieChart(
-                                                                                        document.getElementById('chart_div'));
-                                                                  chart.draw(data, options);
-                                                              };
-                                                          });
-                                                      }
-                                                                </script>
+                        data.addColumn('string', 'Категория');
+                        data.addColumn('number', 'сумма');
+
+                        $.getJSON('@Url.Action("Pie", "Categories")', null, function (result) {
+                            if (result.length) {
+                                $.each(result, function (index, c) {
+                                    data.addRow([c.Title, c.NumberofMoney]);
+
+                                });
+                                // Отрисовка диаграммы
+                                var chart = new google.visualization.PieChart(
+                                                      document.getElementById('chart_div'));
+                                chart.draw(data, options);
+                            };
+                        });
+                    }
+                </script>
             </div>
             <hr />
             <div class="row">

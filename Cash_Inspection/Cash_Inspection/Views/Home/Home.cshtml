@@ -1,0 +1,250 @@
+﻿@using Cash_Inspection.Models
+@model LoginViewModel
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Creative - Start Bootstrap Theme</title>
+    <!-- Bootstrap Core CSS -->
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
+
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="~/Content/animate.min.css" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/creative.css" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Cash Incpection</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">More</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Price</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <video autoplay loop style="width:100%;position:absolute;height:100%;">
+        <source src="~/src/bg-video.mp4" type="video/mp4" />
+    </video>
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+
+                <h1>Cash Inspection</h1>
+                <hr>
+                <p>We know, what to do with your money.</p>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <button type="submit" class="btn btn-default">@Html.ActionLink("Sign In", "Login", "Account")</button>
+                            <button type="submit" class="btn btn-default">@Html.ActionLink("Register as a new user", "Register", "Account")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2 class="col-mf-6">O СЕРВИСЕ</h2>
+                    <p class="flow-text text-justify col-mf-12">
+                        Порой, в нашем современном мире тяжело контролировать свои финансовые операции, особенно, если вы всегда находитесь в движении.
+                        Исходя из вышесказанного, к нам пришла идея, для создания сервиса учета финансов, который будет контролировать все транзакции, совершенные вами.
+                        Наш сервис для учета личных финансов, является максимально удобным и простым для использования. Он позволяет планировать ваш бюджет, вести учет доходов, расходов, долгов, а также, планирование платежей. Также, присутствует функция, которая отображает в виде графиков ваши доходы/расходы за определенный промежуток времени.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        
+            <div class="row">
+                <div class="container">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Особенности сервиса</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
+        </div>
+            <div class="row">
+                <div class="container">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="large material-icons col-mf-6">view_list</i>
+                            <h4>Распределения денежных средств по дням</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="large material-icons col-mf-6">trending_up</i>
+                            <h4>Подробная статистика и графики</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="large material-icons col-mf-6">track_changes</i>
+                            <h4>Быстродействие</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="large material-icons col-mf-6">visibility</i>
+                            <h4>Простой интерфейс</h4>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <section class="no-padding" id="portfolio">
+        <div class="row">
+            <div class="container">
+        <h1>Price table</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>FREE</th>
+                    <th>Advanced</th>
+                    <th>VIP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Best</th>
+                    <th>+</th>
+                    <th>+</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>+</th>
+                    <th>+</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>+</th>
+                    <th>+</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>+</th>
+                    <th>+</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>-</th>
+                    <th>+</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>-</th>
+                    <th>+</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>-</th>
+                    <th>-</th>
+                    <th>+</th>
+                </tr>
+                <tr>
+                    <th>Best</th>
+                    <th>-</th>
+                    <th>-</th>
+                    <th>+</th>
+                </tr>
+            </tbody>
+        </table>
+                </div>
+            </div>
+    </section>
+    <div class="parallax-container">
+        <div class="parallax"><img src="~/src/parallax1.jpg" alt=""></div>
+    </div>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Связаться с нами можно здесь</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="material-icons large">call</i>
+                    <p>228-228-1488</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="material-icons large">email</i>
+                    <p><a href="mailto:your-email@your-domain.com">MaximVergunSob@ka.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/cbpAnimatedHeader.js"></script>
+    <script src="~/Scripts/classie.js"></script>
+    <script src="~/Scripts/creative.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/jquery.fittext.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/materialize.js"></script>
+    
+</body>
+</html>

@@ -175,26 +175,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512142119489_jj.cs" />
-    <Compile Include="Migrations\201512142119489_jj.Designer.cs">
-      <DependentUpon>201512142119489_jj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512162040558_yy.cs" />
-    <Compile Include="Migrations\201512162040558_yy.Designer.cs">
-      <DependentUpon>201512162040558_yy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512171740018_plu.cs" />
-    <Compile Include="Migrations\201512171740018_plu.Designer.cs">
-      <DependentUpon>201512171740018_plu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512171748089_hjk.cs" />
-    <Compile Include="Migrations\201512171748089_hjk.Designer.cs">
-      <DependentUpon>201512171748089_hjk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512171838103_uiui.cs" />
-    <Compile Include="Migrations\201512171838103_uiui.Designer.cs">
-      <DependentUpon>201512171838103_uiui.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Classes\UserLogEntry.cs" />
     <Compile Include="Models\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
@@ -212,7 +192,35 @@
     <Compile Include="Models\Repositories\IdentityUnitOfWork.cs" />
     <Compile Include="Models\Repositories\SubcategoryRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Content\animate.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\creative.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\main.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Content\_buttons.scss" />
+    <Content Include="Content\_collapsible.scss" />
+    <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="Scripts\buttons.js" />
+    <Content Include="Scripts\cbpAnimatedHeader.js" />
+    <Content Include="Scripts\classie.js" />
+    <Content Include="Scripts\collapsible.js" />
+    <Content Include="Scripts\creative.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.fittext.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="src\bg-video.mp4" />
     <Content Include="src\parallax1.jpg" />
     <Content Include="src\parallax2.jpg" />
@@ -233,7 +241,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\materialize.css" />
     <Content Include="Models\Classes\favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -255,8 +262,7 @@
     <Content Include="fonts\Roboto-Thin.woff2" />
     <None Include="Properties\PublishProfiles\StudCoin.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -304,34 +310,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\AddTotalResources.cshtml" />
     <Content Include="Views\Subcategories\CreateUmp.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512142119489_jj.resx">
-      <DependentUpon>201512142119489_jj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512162040558_yy.resx">
-      <DependentUpon>201512162040558_yy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512171740018_plu.resx">
-      <DependentUpon>201512171740018_plu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512171748089_hjk.resx">
-      <DependentUpon>201512171748089_hjk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512171838103_uiui.resx">
-      <DependentUpon>201512171838103_uiui.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

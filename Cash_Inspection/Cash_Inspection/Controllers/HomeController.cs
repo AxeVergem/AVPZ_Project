@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,23 @@ namespace Cash_Inspection.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        protected bool UserIsAuthenticated
         {
+            get
+            {
+                return System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            }
+        }
+        [AllowAnonymous]
+        public ActionResult Home()
+        {
+
+            if(UserIsAuthenticated)
+            {
+                RedirectToActionPermanent("Index", "Categories");
+            }
             return View();
         }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
