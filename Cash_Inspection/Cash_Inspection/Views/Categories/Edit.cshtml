@@ -1,18 +1,24 @@
 ﻿@model Cash_Inspection.Models.Category
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование";
 }
 
-<h2>Edit</h2>
+<div class="col-md-12 pull-left text-left">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h3>@ViewBag.Title <span class="label label-default">Категории</span></h3>
+        </li>
 
+    </ul>
+
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Category</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

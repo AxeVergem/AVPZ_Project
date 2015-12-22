@@ -3,8 +3,20 @@
     padding-bottom: 20px;
 }
 
-
-
+.collapsible-header>.label {
+    background-color: #5cb85c;
+    display: inline;
+    padding: .2em .6em .3em;
+    margin-left: 12px;
+    font-size: 80%;
+    font-weight: bold;
+    line-height: 1;
+    color: #FFFFFF;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 18px 18px 18px 18px;
+}
 .material-icons {
 
     font-family: 'Material Icons';

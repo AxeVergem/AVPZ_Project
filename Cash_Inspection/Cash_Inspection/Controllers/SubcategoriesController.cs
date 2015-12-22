@@ -69,7 +69,7 @@ namespace Cash_Inspection.Controllers
                     
                     _Manager.Trans.CategoryToSubTransactionAdd(HttpContext, Cat, subcategory);
                     _Manager.Save();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details","Categories", new {id = subcategory.CategoryId });
                 }                  
 
             }             

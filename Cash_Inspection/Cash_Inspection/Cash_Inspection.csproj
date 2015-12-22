@@ -175,9 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512220241447_sdd2.cs" />
-    <Compile Include="Migrations\201512220241447_sdd2.Designer.cs">
-      <DependentUpon>201512220241447_sdd2.cs</DependentUpon>
+    <Compile Include="Migrations\201512220347340_fss1s.cs" />
+    <Compile Include="Migrations\201512220347340_fss1s.Designer.cs">
+      <DependentUpon>201512220347340_fss1s.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Classes\UserLogEntry.cs" />
     <Compile Include="Models\Interfaces\ICategoryRepository.cs" />
@@ -301,8 +301,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512220241447_sdd2.resx">
-      <DependentUpon>201512220241447_sdd2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512220347340_fss1s.resx">
+      <DependentUpon>201512220347340_fss1s.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
