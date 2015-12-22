@@ -3,6 +3,23 @@
     padding-bottom: 20px;
 }
 
+
+
+.material-icons {
+
+    font-family: 'Material Icons';
+    font-weight: 300;
+    text-align: right;
+    font-style: inherit;
+    font-size: 24px;
+    line-height: 0.8;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

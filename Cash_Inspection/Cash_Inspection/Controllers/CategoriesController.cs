@@ -11,22 +11,38 @@ using Microsoft.AspNet.Identity;
 
 namespace Cash_Inspection.Controllers
 {
-    
+    [Authorize]
     public class CategoriesController : Controller
     {
-        
+        protected bool UserIsAuthenticated
+        {
+            get
+            {
+                return System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            }
+        }
+
+        protected string UserId
+        {
+            get
+            {
+                var result = (UserIsAuthenticated ? System.Web.HttpContext.Current.User.Identity.GetUserId() : null);
+                return result;
+            }
+        }
         private DataEntities db = new DataEntities();
         IdentityUnitOfWork _Manager= new IdentityUnitOfWork();
 
 
         #region NO-POST-GET_Actions
-                                                                                        /// <summary>
-                                                                                        /// Вывод общих средств Аккаунта.
-                                                                                        /// </summary>                                                                                       
-                                                                                    public Nullable<decimal> TotalMoney()
-                                                                                    {
-                                                                                        return db.Users.Find(User.Identity.GetUserId()).TotalMoney;
-                                                                                    }
+        /// <summary>
+        /// Вывод общих средств Аккаунта.
+        /// </summary>                                                                                       
+        public Nullable<decimal> TotalMoney()
+        {
+            if (UserIsAuthenticated) { return db.Users.Find(User.Identity.GetUserId()).TotalMoney; }
+            return Decimal.Zero;
+        }
         public JsonResult Pie()
         {
             string id = User.Identity.GetUserId();
@@ -47,13 +63,18 @@ namespace Cash_Inspection.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.TotalMoney = db.Users.Find(User.Identity.GetUserId()).TotalMoney;
-            ViewBag.Log = _Manager.Trans.GetUserLog(HttpContext);
-            string id = User.Identity.GetUserId();
-            var q = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
-
-            return View(q.ToList());
-            
+            if (UserIsAuthenticated)
+            {
+                ViewBag.TotalMoney = db.Users.Find(User.Identity.GetUserId()).TotalMoney;
+                ViewBag.Log = _Manager.Trans.GetUserLog(HttpContext);
+                string id = User.Identity.GetUserId();
+                var q = from b in db.CategoryDb where b.ApplicationUser.Id == id select b;
+                return View(q.ToList());
+            }
+            else
+            {
+                return View();
+            }
         }
 
         // GET: Categories/Details/5

@@ -7,13 +7,13 @@ namespace Cash_Inspection.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class plu : IMigrationMetadata
+    public sealed partial class sdd2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(plu));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(sdd2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512171740018_plu"; }
+            get { return "201512220241447_sdd2"; }
         }
         
         string IMigrationMetadata.Source

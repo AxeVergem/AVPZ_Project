@@ -8,108 +8,93 @@
 
 
 
-<div class="container" style="min-height:490px;">
+<div class="container">
     <div class="row">
-        @*журнал*@
-        <h2>@ViewBag.CategoryName</h2>
-        <h4>Cредства:@Model.NumberofMoney</h4>
-    
-                <div class="col-md-6" style="overflow-y:scroll;max-height:22em">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Имя</th>
-                                <th>Средства</th>
-                                <th>Комментарий</th>
-                                <th>дата</th>
-                            </tr>
-                        </thead>
 
 
-                        @foreach (Subcategory item in _Manager.Categories.GetAllSubcategory(Model))
-                        {
-                            <tbody>
-                                <tr>
-                                    <td>@item.Title</td>
-                                    <td>@item.Value</td>
-                                    <th>@item.Text</th>
-                                    <td>@item.Date</td>
-                                </tr>
-                            </tbody>
-                        }
-                    </table>
-                </div>           
-            @*статистика*@
+        <div class="col-md-12 pull-left text-left">
+            <ul class="list-group">
+                <li class="list-group-item">
+
+                    <h3>Категория: <span class="label label-default">@Model.Title</span></h3>
+                    <br><h4>Распредленно:@Math.Floor(Model.NumberofMoney)</h4>
+
+                </li>
+
+            </ul>
             <div class="col-md-6">
-                <div class="row" id="chart_div">
-
-                </div>
-                            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-                                         <script type="text/javascript">
-                                                                  // Подгружаем API
-                                                                  google.load('visualization', '1.0', { 'packages': ['corechart'] });
-                                                                  // Устанавливаем callback
-                                                                  google.setOnLoadCallback(drawChart);
-
-                                                                  function drawChart() {
-
-                                                                      var options = {
-                                                                          'title': 'Статистика:',
-                                                                          'width': 550,
-                                                                          'height': 350
-                                                                      };
-
-                                                                      var data = new google.visualization.DataTable();
-                                                                      data.addColumn('string', 'Категория');
-                                                                      data.addColumn('number', 'сумма');
-
-                                                                      $.getJSON('@Url.Action("ColumnDiogram", "Subcategories", new  {  id = Model.Id })', null,
-                                                                                                                    function (result) {
-                                                                          if (result.Countries.length) {
-                                                                              $.each(result.Countries, function (index, c)
-                                                                              {
-                                                                                  data.addRow([c.Title, c.Value]);
-                                                                              });
-                                                                              // Отрисовка диаграммы
-                                                                              var chart = new google.visualization.ColumnChart(
-                                                                                                    document.getElementById('chart_div'));
-                                                                              chart.draw(data, options);
-                                                                          };
-                                                                      });
-                                                                  }
-                                            </script>
-
-
-
-
-                <div class="row">
-                    <a class="ibtn waves-effect waves-light ibtn" style="width:49%" href="@Url.Action("CreateImp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">remove</i></a>
-                    <a class="ibtn waves-effect waves-light ibtn" style="width:49%" href="@Url.Action("CreateUmp", "Subcategories", new { id = ViewBag.ID })"><i class="material-icons">add</i></a>
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <a style="color: #fff" class="btn btn-success" href="@Url.Action("CreateImp", "Subcategories", new { id = ViewBag.ID })">Добавить расход</a>
+                    <a style="color: #fff" class="btn btn-success" href="@Url.Action("CreateUmp", "Subcategories", new { id = ViewBag.ID })">Добавить доход</a>
+                    <a  style="color: #fff" class="btn btn-danger" href='@Url.Action("Index", "Categories")'>Назад</a>
                 </div>
             </div>
 
         </div>
+
+
+        <div class="col-md-6 pull-left" style="overflow-y:scroll;max-height:25em">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Средства</th>
+                        <th>Дата</th>
+                    </tr>
+                </thead>
+
+
+                @foreach (Subcategory item in _Manager.Categories.GetAllSubcategory(Model))
+                {
+                    <tbody>
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Value</td>
+                            <td>@item.Date</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+        @*статистика*@
+        <div class="col-md-6">
+            <div id="chart_div">
+            </div>
+        </div>
+    </div>
 </div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    // Подгружаем API
+    google.load('visualization', '1.0', { 'packages': ['corechart'] });
+    // Устанавливаем callback
+    google.setOnLoadCallback(drawChart);
 
-@*<div>
-        <h4>Category</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
+    function drawChart() {
 
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
+        var options = {
+            'title': 'Статистика:',
+            'width': 500,
+            'height': 340
+        };
 
-            <dt>
-                @Html.DisplayNameFor(model => model.NumberofMoney)
-            </dt>
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Title');
+        data.addColumn('number', 'Value');
 
-            <dd>
-                @Html.DisplayFor(model => model.NumberofMoney)
-            </dd>
+        $.getJSON('@Url.Action("ColumnDiogram", "Subcategories", new  {  id = Model.Id })', null,
+                                                      function (result) {
+                                                          if (result.Countries.length) {
+                                                              $.each(result.Countries, function (index, c) {
+                                                                  data.addRow([c.Title, c.Value]);
+                                                              });
+                                                              // Отрисовка диаграммы
+                                                              var chart = new google.visualization.LineChart(
+                                                                                    document.getElementById('chart_div'));
+                                                              chart.draw(data, options);
+                                                          };
+                                                      });
+    }
+</script>
 
-        </dl>
-    </div>*@

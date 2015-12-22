@@ -31,8 +31,6 @@ namespace Cash_Inspection.Models
         public string Title { get; set; }
         [Display(Name = "Стоимость")]          
         public decimal Value { get; set; }
-        [Display(Name = "Комментарий")]
-        public string Text { get; set; }
         public DateTime Date { get; set; }
         public  int CategoryId { get; set; }
         public  string UserId { get; set; }

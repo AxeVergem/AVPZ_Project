@@ -18,29 +18,12 @@ namespace Cash_Inspection.Controllers
         private DataEntities db = new DataEntities();
         IdentityUnitOfWork _Manager = new IdentityUnitOfWork();
 
-        // GET: Subcategories
-        public async Task<ActionResult> Index()
-        {
-            var subcategoryDb = db.SubcategoryDb.Include(s => s.Category);
-            return View(await subcategoryDb.ToListAsync());
-        }
-
-        #region MyActions
-
         public JsonResult ColumnDiogram(int id)
         {                  
            List<Subcategory> list= new List<Subcategory>();
             var qu = from b in db.SubcategoryDb where b.CategoryId == id select b;             
             return Json(new { Countries =qu.ToList() }, JsonRequestBehavior.AllowGet );  
         }
-
-
-
-        #endregion
-
-
-
-
 
         // GET: Subcategories/Details/5
         public async Task<ActionResult> Details(int? id)

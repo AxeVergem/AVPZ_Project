@@ -26,7 +26,7 @@ namespace Cash_Inspection.Models
     public class DataEntities : IdentityDbContext<ApplicationUser>
     {
 
-        public DataEntities() : base("Default") { }
+        public DataEntities() : base("DefaultConnection", throwIfV1Schema: false) { }
         public virtual DbSet<Category> CategoryDb { get; set; }
         public virtual DbSet<Subcategory> SubcategoryDb { get; set; }
         public virtual DbSet<UserLogEntry> UserLog { get; set; }

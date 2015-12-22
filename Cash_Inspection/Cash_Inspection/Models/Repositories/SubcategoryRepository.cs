@@ -44,8 +44,7 @@ namespace Cash_Inspection.Models
                 Title = Subcategory.Title,
                 Value = Subcategory.Value,
                 Date = DateTime.Now,
-                CategoryId = Subcategory.CategoryId,
-                Text = Subcategory.Text,        
+                CategoryId = Subcategory.CategoryId,   
                 UserId = http.User.Identity.GetUserId()                 
             });
             db.SubcategoryDb.Add(Subcategory);
@@ -59,7 +58,6 @@ namespace Cash_Inspection.Models
                 Value = -Subcategory.Value,
                 Date = DateTime.Now,
                 CategoryId = Subcategory.CategoryId,
-                Text = Subcategory.Text,
                 UserId = http.User.Identity.GetUserId()
             });
             db.SubcategoryDb.Add(Subcategory);
