@@ -17,7 +17,8 @@ namespace Cash_Inspection.Models
         [Display(Name = "Комментарий")]
         public string Comment { get; set; }
         public DateTime Date { get; set; }      
-        public virtual string UserId { get; set; } 
+        public string UserId { get; set; } 
+        public ApplicationUser ApplicationUser { get; set; }
        
     }
 }

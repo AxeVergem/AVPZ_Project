@@ -7,13 +7,7 @@
     DataEntities db = new DataEntities();
 }
 
-
-<!-- Button trigger modal -->
-
-
-
-
-<div class="container" style="min-height:490px;">
+<div class="container" style="min-height:440px;">
     @*внутреняя компоновка*@
 
     @*основной контент*@
@@ -38,7 +32,6 @@
                             </div>
                             <br>Распределено <b>средств</b>:
                             <div class="badge">
-
                                 @Math.Floor(Model.Sum(x => x.ApplicationUser.ListCategory.Sum(s => s.NumberofMoney) / x.ApplicationUser.ListCategory.Count))
                             </div>
 
@@ -47,19 +40,9 @@
 
                 </ul>
                 <div class="btn-group col-md-6">
-                    <a class="btn btn-success" type="button" href='@Url.Action("Create")'>
+                    <a class="btn btn-success" type="button" href='@Url.Action("Create", "Categories")'>
                         Добавить категорию
                     </a>
-                    
-                     <button class="btn btn-default" type="button" href='@Url.Action("Create")'>
-                        Последнее
-                    </button>
-                    <button class="btn btn-default" type="button" href="#">
-                        Возрастанию
-                    </button>
-                        <button class="btn btn-default" type="button"href="#">Убыванию</button>
-                        
-                    
                 </div>
                 
             </div>
@@ -73,14 +56,21 @@
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <div class="eid_menu_right">
-                            
+
                             <a href='@Url.Action("Edit", "Categories", new { id = item.Id })'><i class="material-icons">settings</i></a>
                             <a href='@Url.Action("Details", "Categories", new { id = item.Id })'><i class="material-icons">info_outline</i></a>
-                            <a data-toggle="modal" data-target="#myModal"><i class="material-icons">delete</i></a>
-                            
+                            <a href='@Url.Action("DeleteConfirmed","Categories", new { id = item.Id})' data-toggle="modal" data-target="#myModal"><i class="material-icons">delete</i></a>
+
                         </div>
-                        
-                        <div class="collapsible-header"><i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title) <span class="label label-default text-right">@Html.DisplayFor(modelItem => item.NumberofMoney)</span> </div>
+                        @*<div class="badge">
+
+                                @Math.Floor(Model.Sum(x => x.ApplicationUser.ListCategory.Sum(s => s.NumberofMoney) / x.ApplicationUser.ListCategory.Count))
+                            </div>*@
+                        <div class="collapsible-header">
+                            <i class="material-icons">person_pin</i>@Html.DisplayFor(modelItem => item.Title)
+                            <span class="label label-default text-right">@Html.DisplayFor(modelItem => item.NumberofMoney)</span>
+                            @*<span class="label label-default text-right">@Html.DisplayFor(modelItem => item.ListSubcategory.Sum(x=>x.Value))</span>*@
+                        </div>
                     </li>
 
                 </ul>

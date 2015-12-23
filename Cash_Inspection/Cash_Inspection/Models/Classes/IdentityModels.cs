@@ -14,6 +14,7 @@ namespace Cash_Inspection.Models
     {
         public decimal TotalMoney { get; set; }
         public IList<Category> ListCategory { get; set; }
+        public IList<UserLogEntry> LisLogEntry { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -29,7 +30,7 @@ namespace Cash_Inspection.Models
         public DataEntities() : base("DefaultConnection", throwIfV1Schema: false) { }
         public virtual DbSet<Category> CategoryDb { get; set; }
         public virtual DbSet<Subcategory> SubcategoryDb { get; set; }
-        public virtual DbSet<UserLogEntry> UserLog { get; set; }
+        public virtual DbSet<UserLogEntry> UserLogDb { get; set; }
        
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

@@ -19,11 +19,9 @@ namespace Cash_Inspection.Models
    public class ResourcesRepository:IResourcesRepository
     {
         public DataEntities _db;
-        IdentityUnitOfWork _Manager;
         public  ResourcesRepository()
         {
             this._db = new DataEntities();
-            _Manager = new IdentityUnitOfWork();
         }
         public ResourcesRepository(DataEntities db)
         {
@@ -76,13 +74,13 @@ namespace Cash_Inspection.Models
                 UserId = HttpContext.User.Identity.GetUserId(),
                 Id=Entry.Id
             };
-            _db.UserLog.Add(UsEntry);           
+            _db.UserLogDb.Add(UsEntry);           
         }
         public IEnumerable<UserLogEntry> GetUserLog(HttpContextBase http)
         {
             string userID = http.User.Identity.GetUserId();
             List<UserLogEntry> log = new List<UserLogEntry>();
-            var qu = from b in _db.UserLog where b.UserId == userID select b;
+            var qu = from b in _db.UserLogDb where b.UserId == userID select b;
             log = qu.ToList();
             return log;
                       

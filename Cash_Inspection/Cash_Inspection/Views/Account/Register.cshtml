@@ -1,14 +1,22 @@
 ﻿@model Cash_Inspection.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Регистрация";
 }
 
-<h2>@ViewBag.Title.</h2>
 
+<div class="col-md-12 pull-left text-left">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h3><span class="label label-default">@ViewBag.Title</span></h3>
+            <hr /><h4>Создание нового аккаунта</h4>
+        </li>
+
+    </ul>
+
+</div>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -31,7 +39,8 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-default" value="Регистрация" />
+            <a style="color: #fff" class="btn btn-primary" href='@Url.Action("Login", "Account")'>У меня есть аккаунт</a>
         </div>
     </div>
 }

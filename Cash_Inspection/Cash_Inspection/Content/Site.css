@@ -2,7 +2,18 @@
     padding-top: 60px;
     padding-bottom: 20px;
 }
-
+.modal>.fade>.in {
+    background-color: none;
+}
+footer {
+    font: 12px Helvetica, sans-serif;
+  position: absolute;
+  bottom: 0;
+  width: 92%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #FFFFFF;
+}
 .collapsible-header>.label {
     background-color: #5cb85c;
     display: inline;

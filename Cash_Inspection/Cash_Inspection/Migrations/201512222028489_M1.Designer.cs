@@ -7,13 +7,13 @@ namespace Cash_Inspection.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class fss1s : IMigrationMetadata
+    public sealed partial class M1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fss1s));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(M1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512220347340_fss1s"; }
+            get { return "201512222028489_M1"; }
         }
         
         string IMigrationMetadata.Source

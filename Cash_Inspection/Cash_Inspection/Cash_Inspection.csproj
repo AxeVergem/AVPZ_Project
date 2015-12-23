@@ -175,9 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512220347340_fss1s.cs" />
-    <Compile Include="Migrations\201512220347340_fss1s.Designer.cs">
-      <DependentUpon>201512220347340_fss1s.cs</DependentUpon>
+    <Compile Include="Migrations\201512222028489_M1.cs" />
+    <Compile Include="Migrations\201512222028489_M1.Designer.cs">
+      <DependentUpon>201512222028489_M1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Classes\UserLogEntry.cs" />
     <Compile Include="Models\Interfaces\ICategoryRepository.cs" />
@@ -196,7 +196,23 @@
     <Compile Include="Models\Repositories\IdentityUnitOfWork.cs" />
     <Compile Include="Models\Repositories\SubcategoryRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Content\animate.min.css" />
+    <Content Include="Content\bg-video.mp4" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\creative.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\parallax1.jpg" />
+    <Content Include="Content\parallax2.jpg" />
+    <Content Include="Content\parallax3.jpg" />
+    <Content Include="Scripts\cbpAnimatedHeader.js" />
+    <Content Include="Scripts\classie.js" />
+    <Content Include="Scripts\creative.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.fittext.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="src\bg-video.mp4" />
     <Content Include="src\parallax1.jpg" />
     <Content Include="src\parallax2.jpg" />
@@ -237,6 +253,10 @@
     <Content Include="fonts\Roboto-Thin.ttf" />
     <Content Include="fonts\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto-Thin.woff2" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\StudCoin.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -301,8 +321,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512220347340_fss1s.resx">
-      <DependentUpon>201512220347340_fss1s.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512222028489_M1.resx">
+      <DependentUpon>201512222028489_M1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

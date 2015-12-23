@@ -19,9 +19,7 @@ namespace Cash_Inspection.Models
         public decimal NumberofMoney { get; set; }
 
         public ICollection<Subcategory> ListSubcategory { get; set; }
-
-        public  string iUserName { get; set; }
-        public  ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
     public class Subcategory
     {
@@ -33,7 +31,6 @@ namespace Cash_Inspection.Models
         public decimal Value { get; set; }
         public DateTime Date { get; set; }
         public  int CategoryId { get; set; }
-        public  string UserId { get; set; }
         public  Category Category { get; set; }
     }
 }

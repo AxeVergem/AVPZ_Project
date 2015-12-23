@@ -57,8 +57,8 @@ namespace Cash_Inspection.Controllers
             if (ModelState.IsValid)
             {
                  
-               Category Cat= _Manager.Categories.Get(subcategory.CategoryId);
-                if (subcategory.Value >Cat.NumberofMoney)
+               var Cat = _Manager.Categories.Get(subcategory.CategoryId);
+                if (subcategory.Value > Cat.NumberofMoney)
                 {
                     ViewBag.ResourcesLessError = "Не возможно провести операцию,у вас не хватает средств на проиндексированном счету категории";
                     RedirectToAction("Create", "Subcategories");
@@ -90,14 +90,14 @@ namespace Cash_Inspection.Controllers
                 
                Category Cat= _Manager.Categories.Get(subcategory.CategoryId);         
                     ViewBag.ResourcesLessError = "Не возможно провести операцию,у вас не хватает средств на проиндексированном счету категории";
-                    RedirectToAction("Create", "Subcategories");   
-                    _Manager.Subcategories.CreateUmp(subcategory, HttpContext);
+                    //RedirectToAction("Details", "Categories", new { id = subcategory.CategoryId});   
+                _Manager.Subcategories.CreateUmp(subcategory, HttpContext);
                 
-                _Manager.Trans.TotalToCategoryTransThowTheCat(HttpContext,Cat,subcategory.Value)   ;
+                _Manager.Trans.TotalToCategoryTransThowTheCat(HttpContext, Cat,subcategory.Value)   ;
                 _Manager.Trans.CategoryToSubTransactionRemove(HttpContext, Cat, subcategory);
-                    _Manager.Save();
-                    return RedirectToAction("Index");
-               
+                _Manager.Save();
+                return RedirectToAction("Details", "Categories", new { id = subcategory.CategoryId });
+
 
             }             
             return View(subcategory);
